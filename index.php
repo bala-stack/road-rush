@@ -8,6 +8,7 @@
     <script src="js/phaser.js"></script>
     <script src="js/classes/road.js"></script>
     <script src="js/classes/utils/align.js"></script>
+	<script src="js/classes/utils/collision.js"></script>
 	<script src="js/sceneMain.js"></script>		
     <script src="js/main.js"></script>
 </head>
