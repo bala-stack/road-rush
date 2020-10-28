@@ -17,7 +17,7 @@ class SceneMain extends Phaser.Scene {
     }
     create(){
 		//Define our objects
-		model.score = 100;
+		// model.score = 0;
 		emitter = new Phaser.Events.EventEmitter();
 		controller = new Controller();
 		
@@ -25,6 +25,9 @@ class SceneMain extends Phaser.Scene {
 		this.road.x = game.config.width/2;
 		this.road.makeLines();
 		
+		this.sb = new ScoreBox({scene:this});
+		this.sb.x = game.config.width/8;
+		this.sb.y = 20;		
 		
 		//keyboard capture
 		this.input.keyboard.on('keydown', this.chGameLn, this);
