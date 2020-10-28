@@ -15,7 +15,7 @@ class Road extends Phaser.GameObjects.Container{
 		this.lineGroup = this.scene.add.group();
 		
 		this.count = 0;
-		this.car = this.scene.add.sprite(this.displayWidth/4,game.config.height*.9,"cars");
+		this.car = this.scene.add.sprite(this.displayWidth/4,game.config.height*.8,"cars");
 		Align.scaleToGameW(this.car,.10);
 		this.add(this.car);
 		
@@ -41,10 +41,12 @@ class Road extends Phaser.GameObjects.Container{
 	}
 	
 	addObject(){
-		var objs = ['pcar1','pcar2','cone','barrier'];
+		var objs = [{key:'pcar1',speed:10},{key:'pcar2',speed:10},{key:'cone',speed:20},{key:'barrier',speed:20}];
 		var index = Math.floor(Math.random()*4);
-		var key = objs[index];
+		var key = objs[index].key;
+		var speed = objs[index].speed;
 		this.object = this.scene.add.sprite(-this.displayWidth/4,0,key);
+		this.object.speed = speed;
 		var lane = Math.random()*100;
 		if(lane < 50){
 			this.object.x = this.displayWidth/4;
@@ -56,7 +58,7 @@ class Road extends Phaser.GameObjects.Container{
 	}
 
 	moveObject(){
-		this.object.y += this.vSpace/20;
+		this.object.y += this.vSpace/this.object.speed;
 		if(this.object.y > game.config.height){
 			this.object.destroy();
 			this.addObject();
